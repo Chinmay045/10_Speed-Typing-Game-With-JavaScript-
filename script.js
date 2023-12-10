@@ -54,3 +54,9 @@ function startTimer() {
         timer.innerText = getTimerTime()
     }, 1000)
 }
+
+function getTimerTime() {
+    return Math.floor((new Date() - startTime) / 1000)
+}
+
+renderNewQuote()

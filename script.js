@@ -33,3 +33,24 @@ function getRandomQuote() {
         .then(response => response.json())
         .then(data => data.content)
 }
+
+async function renderNewQuote() {
+    const quote = await getRandomQuote()
+    quoteDisplayElement.innerHTML = ''
+    quote.split('').forEach(character => {
+        const characterSpan = document.createElement('span')
+        characterSpan.innerText = character
+        quoteDisplayElement.appendChild(characterSpan)
+    })
+    quoteInputElement.value = null
+    startTimer()
+}
+
+let startTime
+function startTimer() {
+    timerElement.innerText = 0
+    startTime = new Date()
+    setInterval(() => {
+        timer.innerText = getTimerTime()
+    }, 1000)
+}
